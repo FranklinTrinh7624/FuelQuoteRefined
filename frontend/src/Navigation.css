@@ -1,0 +1,17 @@
+nav {
+    display: flex;
+    justify-content: space-around;
+    text-align: left;
+    min-height: 10vh;
+    background: lightskyblue;
+    color: black;
+  }
+  
+  /*hyperlinks*/
+  .nav-links {
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+  }

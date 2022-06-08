@@ -1,0 +1,26 @@
+.LoginRegiApp {
+    background: rgb(135, 250, 154);
+    margin: 100px;
+  }
+  
+  .logUsername {
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+  
+  .logPassword {
+    margin-bottom: 10px;
+  }
+  
+  .regiUser {
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+  
+  .regiPass {
+    margin-bottom: 10px;
+  }
+  
+  .login {
+    margin-bottom: 15px;
+  }
