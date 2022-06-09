@@ -145,6 +145,7 @@ app.post('/data/fuelquote', validateToken, async (req,res)=>{
   const username = req.user.username;
   const date = req.body.date;
   const gallons = req.body.gallons;
+  const expiration = req.body.expiration;
   //const pricePerGallon = req.body.pricePerGallon;
   //const address = req.body.address;
   const exists = await profileSchema.findOne({username: username});
@@ -169,13 +170,17 @@ app.post('/data/fuelquote', validateToken, async (req,res)=>{
   margin = multiplicationFactor *1.5
   suggestedPriceLol = 1.5 + margin
   totalAmountDue = gallons * suggestedPriceLol
+
+  //const expirationInDay = 7;
+
   const fuelform = new QuoteSchema({ //username: exists.username address: exists.address1
     username: exists.username,
     date: date, //look up javascript date formating
     gallons: gallons,
     address: exists.address1,
     pricePerGallon: suggestedPriceLol, 
-    totalPrice: Math.round(100*totalAmountDue)/100
+    totalPrice: Math.round(100*totalAmountDue)/100,
+    expirationDate: expiration
   });
   console.log(fuelform);
   await fuelform.save()
@@ -256,7 +261,6 @@ app.patch("/data/clientprofile", validateToken, async(req,res) => {
 
 })
 //mongodb+srv://DeadFallen:@cluster0.legd1.mongodb.net/FuelApplication?retryWrites=true&w=majority
-//"mongodb+srv://sakibz:sakibzafar123@cluster0.gslom.mongodb.net/FuelApplication?retryWrites=true&w=majority"
 mongoose.connect("mongodb+srv://DeadFallen:franklint1234@cluster0.legd1.mongodb.net/FuelApplication?retryWrites=true&w=majority", {useNewUrlParser: true})
   .then(() => {
     app.listen(3000, () => {
